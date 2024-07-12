@@ -41,7 +41,7 @@ const NewsLetterList: FC<{ newsletters: NewsletterItem[] }> = ({ newsletters }) 
               container
               spacing={4}
             >
-              {items.map((item: any) => (
+              {items.map((item: NewsletterItem) => (
                 <Grid
                   item
                   key={item.id}
