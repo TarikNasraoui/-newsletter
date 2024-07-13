@@ -8,7 +8,7 @@ import theme from '@/styles/theme';
 
 const NewsLetterCard: FC<{ newsLetter: NewsletterItem }> = ({ newsLetter }) => {
   const { user } = useUser();
-  const hasAccess = newsLetter.subscriptions.length === 0 || newsLetter.subscriptions.some((sub) => !user.subscriptions.includes(sub));
+  const hasAccess = newsLetter.subscriptions.length > 0 && newsLetter.subscriptions.some((sub) => user.subscriptions.includes(sub));
 
   const labelButton = hasAccess ? "S'abonner" : "S'inscrire";
   return (
@@ -33,7 +33,7 @@ const NewsLetterCard: FC<{ newsLetter: NewsletterItem }> = ({ newsLetter }) => {
         <Button
           variant="contained"
           bgcolor={hasAccess ? theme.palette.red.main : theme.palette.yellow.main}
-          labelColor={hasAccess ? 'white' : 'black'}
+          labelcolor={hasAccess ? 'white' : 'black'}
         >
           {labelButton}
         </Button>
