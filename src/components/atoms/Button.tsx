@@ -4,24 +4,26 @@ import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/materia
 import { styled } from '@mui/system';
 
 interface ButtonProps extends MuiButtonProps {
-  status?: boolean;
+  bgcolor?: string;
+  labelColor?: string;
 }
 
-const StyledButton = styled(MuiButton)<ButtonProps>(({ theme, status }) => ({
+const StyledButton = styled(MuiButton)<ButtonProps>(({ bgcolor = 'red', labelColor = 'black' }) => ({
   padding: '8px 30px 8px 30px',
-  backgroundColor: status ? theme.palette.red.main : theme.palette.yellow.main,
-  color: status ? 'white' : 'black',
+  backgroundColor: bgcolor,
   textTransform: 'capitalize',
   borderRadius: 40,
+  color: labelColor,
   '&:hover': {
-    backgroundColor: status ? theme.palette.red.dark : theme.palette.yellow.dark,
+    backgroundColor: bgcolor,
   },
 }));
 
-const Button: FC<ButtonProps> = ({ status, ...props }) => {
+const Button: FC<ButtonProps> = ({ labelColor, bgcolor, ...props }) => {
   return (
     <StyledButton
-      status={status}
+      bgcolor={bgcolor}
+      labelColor={labelColor}
       {...props}
     />
   );
